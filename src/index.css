@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(29, 41, 61);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(29, 41, 61);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(29, 41, 61);
+  --primary: rgb(29, 41, 61);
+  --primary-foreground: rgb(239, 246, 255);
+  --secondary: rgb(248, 250, 252);
+  --secondary-foreground: rgb(69, 85, 108);
+  --muted: rgb(248, 250, 252);
+  --muted-foreground: rgb(144, 161, 185);
+  --accent: rgb(239, 246, 255);
+  --accent-foreground: rgb(28, 57, 142);
+  --destructive: rgb(231, 0, 11);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border: rgb(226, 232, 240);
+  --input: rgb(226, 232, 240);
+  --ring: rgb(153, 161, 175);
+  --sidebar: rgb(248, 250, 252);
+  --sidebar-foreground: rgb(69, 85, 108);
+  --sidebar-primary: rgb(29, 41, 61);
+  --brand: rgb(20, 71, 230);
+  --brand-tint: rgba(20, 71, 230, 0.05);
+  --sidebar-primary-foreground: rgb(250, 250, 250);
+  --sidebar-accent: rgb(226, 232, 240);
+  --sidebar-accent-foreground: rgb(15, 23, 43);
+  --sidebar-border: rgb(229, 229, 229);
+  --sidebar-ring: rgb(142, 197, 255);
+  --font-serif: Amiri, ui-serif, serif;
+  --font-mono: Chivo Mono, ui-monospace, monospace;
+  --radius: 0.35rem;
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0;
+  --shadow-opacity: 0.1;
+  --shadow-color: rgb(0, 0, 0);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-md:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+  --shadow-lg:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+  --shadow-xl:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --icon-stroke: rgb(100, 116, 139);
+  --icon-stroke-muted: rgb(148, 163, 184);
+  --checkbox-border: rgb(148, 163, 184);
+  --checkbox-foreground: rgb(255, 255, 255);
+  --icon: rgb(197, 222, 234);
+  --icon-muted: rgb(197, 222, 234);
+  --chart-1: rgb(145, 197, 255);
+  --chart-2: rgb(58, 129, 246);
+  --chart-3: rgb(37, 99, 239);
+  --chart-4: rgb(26, 78, 218);
+  --chart-5: rgb(31, 63, 173);
+  --chart-purple: rgb(101, 116, 205);
+  --chart-pink: rgb(246, 109, 155);
+  --chart-orange: rgb(246, 153, 63);
+  --chart-green: rgb(16, 185, 129);
+  --font-sans: Hanken Grotesk, ui-sans-serif, sans-serif, system-ui;
+  --button-foreground: rgb(69, 85, 108);
+  --transparent: rgba(255, 255, 255, 0);
+  --background-tint: rgba(255, 255, 255, 0.2);
+  --primary-tint: rgba(29, 41, 61, 0.05);
+  --input-tint: rgb(255, 255, 255);
+  --calendar-tint: rgb(255, 255, 255);
+  --input-accent: rgb(239, 246, 255);
+  --calendar-accent: rgb(239, 246, 255);
+  --input-border: rgb(226, 232, 240);
+  --outline: rgba(163, 163, 163, 0.5);
+  --outline-accent: rgba(163, 163, 163, 0.1);
+  --destructive-tint: rgba(220, 38, 38, 0.4);
+  --destructive-accent: rgba(220, 38, 38, 0.2);
+  --destructive-border: rgb(220, 38, 38);
+  --destructive-hover: rgb(220, 38, 38);
+  --destructive-strong: rgb(220, 38, 38);
+}
+
+.dark {
+  --background: rgb(10, 10, 10);
+  --foreground: rgb(250, 250, 250);
+  --card: rgb(23, 23, 23);
+  --card-foreground: rgb(250, 250, 250);
+  --popover: rgb(38, 38, 38);
+  --popover-foreground: rgb(250, 250, 250);
+  --primary: rgb(229, 229, 229);
+  --primary-foreground: rgb(23, 23, 23);
+  --secondary: rgb(38, 38, 38);
+  --secondary-foreground: rgb(250, 250, 250);
+  --muted: rgb(38, 38, 38);
+  --muted-foreground: rgb(161, 161, 161);
+  --accent: rgba(255, 255, 255, 0.05);
+  --accent-foreground: rgb(250, 250, 250);
+  --destructive: rgb(255, 100, 103);
+  --destructive-foreground: rgb(250, 250, 250);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: rgb(115, 115, 115);
+  --sidebar: rgb(24, 24, 27);
+  --sidebar-foreground: rgb(250, 250, 250);
+  --sidebar-primary: rgb(20, 71, 230);
+  --brand-tint: rgba(20, 71, 230, 0.1);
+  --sidebar-accent: rgb(39, 39, 42);
+  --sidebar-accent-foreground: rgb(250, 250, 250);
+  --sidebar-border: rgb(40, 40, 40);
+  --sidebar-ring: rgb(82, 82, 82);
+  --icon-stroke: rgba(255, 255, 255, 0.65);
+  --icon-stroke-muted: rgb(147, 163, 184);
+  --checkbox-border: rgb(147, 163, 184);
+  --icon: rgb(54, 59, 66);
+  --icon-muted: rgb(54, 59, 74);
+  --button-foreground: rgb(250, 250, 250);
+  --transparent: rgba(0, 0, 0, 0);
+  --background-tint: rgba(10, 10, 10, 0.1);
+  --primary-tint: rgba(229, 229, 229, 0.1);
+  --input-tint: rgba(255, 255, 255, 0.05);
+  --calendar-tint: rgba(255, 255, 255, 0.05);
+  --input-accent: rgba(255, 255, 255, 0.08);
+  --calendar-accent: rgba(255, 255, 255, 0.08);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --outline: rgba(115, 115, 115, 0.5);
+  --outline-accent: rgba(115, 115, 115, 0.2);
+  --destructive-tint: rgba(248, 113, 113, 0.6);
+  --destructive-accent: rgba(248, 113, 113, 0.4);
+  --destructive-border: rgba(248, 113, 113, 0.6);
+  --destructive-hover: rgba(248, 113, 113, 0.7);
+  --destructive-strong: rgba(248, 113, 113, 0.9);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-tint: var(--brand-tint);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-button-foreground: var(--button-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-icon: var(--icon);
+  --color-icon-muted: var(--icon-muted);
+  --color-icon-stroke: var(--icon-stroke);
+  --color-icon-stroke-muted: var(--icon-stroke-muted);
+  --color-checkbox: var(--brand);
+  --color-checkbox-border: var(--checkbox-border);
+  --color-checkbox-foreground: var(--checkbox-foreground);
+  --color-shadow-color: var(--shadow-color);
+  --color-transparent: var(--transparent);
+  --color-background-tint: var(--background-tint);
+  --color-primary-tint: var(--primary-tint);
+  --color-input-tint: var(--input-tint);
+  --color-calendar-tint: var(--calendar-tint);
+  --color-input-accent: var(--input-accent);
+  --color-calendar-accent: var(--calendar-accent);
+  --color-input-border: var(--input-border);
+  --color-outline: var(--outline);
+  --color-outline-accent: var(--outline-accent);
+  --color-destructive-tint: var(--destructive-tint);
+  --color-destructive-accent: var(--destructive-accent);
+  --color-destructive-border: var(--destructive-border);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-strong: var(--destructive-strong);
+  --color-alpha-5: rgba(255, 255, 255, 0.95);
+  --color-alpha-10: rgba(255, 255, 255, 0.9);
+  --color-alpha-20: rgba(255, 255, 255, 0.8);
+  --color-alpha-30: rgba(255, 255, 255, 0.7);
+  --color-alpha-40: rgba(255, 255, 255, 0.6);
+  --color-alpha-50: rgba(255, 255, 255, 0.5);
+  --color-alpha-60: rgba(255, 255, 255, 0.4);
+  --color-alpha-70: rgba(255, 255, 255, 0.3);
+  --color-alpha-80: rgba(255, 255, 255, 0.2);
+  --color-alpha-90: rgba(255, 255, 255, 0.1);
+  --font-sans: "Hanken Grotesk", ui-sans-serif, sans-serif, system-ui;
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@theme inline {
+  --animate-collapsible-down: collapsible-down 200ms ease-out;
+  --animate-collapsible-up: collapsible-up 150ms ease-out;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply font-sans bg-background text-foreground antialiased;
+    margin: 0;
+    min-height: 100vh;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
