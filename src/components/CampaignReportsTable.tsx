@@ -82,7 +82,7 @@ export function CampaignReportsTable({ data, selected, onSelectedChange, thumbna
             <SortableHeader>Owner</SortableHeader>
           </TableHead>
           <TableHead>
-            <SortableHeader>Date</SortableHeader>
+            <SortableHeader>Updated</SortableHeader>
           </TableHead>
           <TableHead>
             <SortableHeader>Total views</SortableHeader>

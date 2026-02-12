@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Link, Move, Trash, X } from "foamicons";
+import { ArchiveArrowUp, Link, Move, Plus, Trash, X } from "foamicons";
 import { Button } from "@/components/ui/button";
 
 interface SelectionToastProps {
@@ -7,6 +7,8 @@ interface SelectionToastProps {
   onSelectAll?: () => void;
   onCopyLinks?: () => void;
   onMoveToCollection?: () => void;
+  onAddTo?: () => void;
+  onArchive?: () => void;
   onDelete?: () => void;
   onClose?: () => void;
   isVisible: boolean;
@@ -17,6 +19,8 @@ export function SelectionToast({
   onSelectAll,
   onCopyLinks,
   onMoveToCollection,
+  onAddTo,
+  onArchive,
   onDelete,
   onClose,
   isVisible,
@@ -64,6 +68,30 @@ export function SelectionToast({
                 >
                   <Move className="size-4" />
                   Move to collection
+                </Button>
+              )}
+
+              {onAddTo && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={onAddTo}
+                  className="cursor-pointer text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                >
+                  <Plus className="size-4" />
+                  Add to
+                </Button>
+              )}
+
+              {onArchive && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={onArchive}
+                  className="cursor-pointer text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                >
+                  <ArchiveArrowUp className="size-4" />
+                  Archive
                 </Button>
               )}
 

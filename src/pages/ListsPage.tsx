@@ -12,6 +12,8 @@ import { ListsTable } from "@/components/ListsTable";
 import { ListCard } from "@/components/ListCard";
 import { SelectionToast } from "@/components/SelectionToast";
 import { EditThumbnailDialog } from "@/components/EditThumbnailDialog";
+import { CreateListDialog } from "@/components/CreateListDialog";
+import { useNavigation } from "@/hooks/use-navigation";
 import { listsData, myListsData } from "@/data/lists";
 import { avatars } from "@/data/avatars";
 
@@ -25,6 +27,8 @@ const dataByCategory: Record<string, typeof listsData> = {
 const avatarImages = avatars.slice(0, 10);
 
 export function ListsPage() {
+  const { navigateToListDetail, navigateToEmptyList } = useNavigation();
+  const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [category, setCategory] = useState("Agency lists");
   const [view, setView] = useState<"table" | "grid">("table");
   const [search, setSearch] = useState("");
@@ -50,7 +54,11 @@ export function ListsPage() {
     return [...data].sort((a, b) => {
       const aPinned = pinnedIds.has(a.id) ? 0 : 1;
       const bPinned = pinnedIds.has(b.id) ? 0 : 1;
-      return aPinned - bPinned;
+      if (aPinned !== bPinned) return aPinned - bPinned;
+      // Default sort by date descending (newest first)
+      const [aD, aM, aY] = a.date.split("/").map(Number);
+      const [bD, bM, bY] = b.date.split("/").map(Number);
+      return new Date(bY, bM - 1, bD).getTime() - new Date(aY, aM - 1, aD).getTime();
     });
   }, [activeData, selectedCreators, search, pinnedIds]);
 
@@ -59,6 +67,15 @@ export function ListsPage() {
     setSelectedCreators([]);
     setSelectedItems(new Set());
     setSearch("");
+  }
+
+  function handleListClick(id: string) {
+    const list = activeData.find((l) => l.id === id);
+    if (list && list.talentCount === 0) {
+      navigateToEmptyList(list.title);
+    } else {
+      navigateToListDetail(id);
+    }
   }
 
   function handleThumbnailChange(itemId: string, images: string[]) {
@@ -127,6 +144,7 @@ export function ListsPage() {
           creators={uniqueOwners}
           selectedCreators={selectedCreators}
           onSelectedCreatorsChange={setSelectedCreators}
+          onNewClick={() => setCreateDialogOpen(true)}
         />
       </div>
 
@@ -161,6 +179,7 @@ export function ListsPage() {
                 avatarImages={avatarImages}
                 thumbnailOverrides={thumbnailOverrides}
                 onThumbnailChange={handleThumbnailChange}
+                onRowClick={handleListClick}
               />
             ) : (
               <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
@@ -168,6 +187,7 @@ export function ListsPage() {
                   <ListCard
                     key={list.id}
                     list={list}
+                    onClick={() => handleListClick(list.id)}
                     selected={selectedItems.has(list.id)}
                     onSelectChange={(checked) => {
                       setSelectedItems((prev) => {
@@ -209,11 +229,18 @@ export function ListsPage() {
         roundImages
       />
 
+      <CreateListDialog
+        open={createDialogOpen}
+        onOpenChange={setCreateDialogOpen}
+        onCreate={(name) => navigateToEmptyList(name)}
+      />
+
       <SelectionToast
         selectedCount={selectedItems.size}
         isVisible={selectedItems.size > 0}
         onClose={() => setSelectedItems(new Set())}
         onDelete={() => {}}
+        onArchive={() => {}}
         onMoveToCollection={() => {}}
         onCopyLinks={() => {}}
       />

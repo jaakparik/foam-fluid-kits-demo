@@ -38,7 +38,7 @@ export function CollectionsTable({ data, pinnedIds, onPinChange }: CollectionsTa
         <TableRow>
           <TableHead>Name</TableHead>
           <TableHead>Lists</TableHead>
-          <TableHead>Date created</TableHead>
+          <TableHead>Updated</TableHead>
           <TableHead className="w-10" />
           <TableHead className="w-10">
             <Button variant="ghost" size="icon-sm" className="cursor-pointer">

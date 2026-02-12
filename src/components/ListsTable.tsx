@@ -9,10 +9,13 @@ import {
   LogoFileSheet,
   Copy,
   Trash,
+  ArchiveArrowUp,
   Pin,
   PinFill,
   Images,
+  UserDuotone,
 } from "foamicons";
+import { Avatar, AvatarIcon } from "@/components/ui/avatar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
@@ -43,6 +46,7 @@ interface ListsTableProps {
   avatarImages: string[];
   thumbnailOverrides: Record<string, string[]>;
   onThumbnailChange: (itemId: string, images: string[]) => void;
+  onRowClick?: (id: string) => void;
 }
 
 function SortableHeader({ children }: { children: React.ReactNode }) {
@@ -55,6 +59,20 @@ function SortableHeader({ children }: { children: React.ReactNode }) {
 }
 
 function AvatarGroup({ avatars }: { avatars: string[] }) {
+  if (avatars.length === 0) {
+    return (
+      <div className="flex items-center -space-x-2">
+        {[0, 1, 2].map((i) => (
+          <Avatar key={i} className="border-2 border-background">
+            <AvatarIcon>
+              <UserDuotone />
+            </AvatarIcon>
+          </Avatar>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex items-center -space-x-2">
       {avatars.slice(0, 3).map((src, i) => (
@@ -69,7 +87,7 @@ function AvatarGroup({ avatars }: { avatars: string[] }) {
   );
 }
 
-export function ListsTable({ data, pinnedIds, onPinChange, selected, onSelectedChange, avatarImages, thumbnailOverrides, onThumbnailChange }: ListsTableProps) {
+export function ListsTable({ data, pinnedIds, onPinChange, selected, onSelectedChange, avatarImages, thumbnailOverrides, onThumbnailChange, onRowClick }: ListsTableProps) {
   const [editingThumbnailId, setEditingThumbnailId] = useState<string | null>(null);
   const allSelected = data.length > 0 && selected.size === data.length;
   const someSelected = selected.size > 0 && !allSelected;
@@ -106,7 +124,7 @@ export function ListsTable({ data, pinnedIds, onPinChange, selected, onSelectedC
             <SortableHeader># Talent</SortableHeader>
           </TableHead>
           <TableHead>
-            <SortableHeader>Date</SortableHeader>
+            <SortableHeader>Updated</SortableHeader>
           </TableHead>
           <TableHead>Asks email</TableHead>
           <TableHead>Filters</TableHead>
@@ -116,8 +134,8 @@ export function ListsTable({ data, pinnedIds, onPinChange, selected, onSelectedC
       </TableHeader>
       <TableBody>
         {data.map((list) => (
-          <TableRow key={list.id} data-state={selected.has(list.id) ? "selected" : undefined}>
-            <TableCell>
+          <TableRow key={list.id} data-state={selected.has(list.id) ? "selected" : undefined} onClick={() => onRowClick?.(list.id)}>
+            <TableCell onClick={(e) => e.stopPropagation()}>
               <Checkbox
                 checked={selected.has(list.id)}
                 onCheckedChange={() => toggleRow(list.id)}
@@ -134,24 +152,24 @@ export function ListsTable({ data, pinnedIds, onPinChange, selected, onSelectedC
             <TableCell className="text-muted-foreground">
               {list.owner}
             </TableCell>
-            <TableCell className="text-muted-foreground">
+            <TableCell className={list.talentCount === 0 ? "text-destructive" : "text-muted-foreground"}>
               {list.talentCount}
             </TableCell>
             <TableCell className="text-muted-foreground">
               {list.date}
             </TableCell>
-            <TableCell>
+            <TableCell onClick={(e) => e.stopPropagation()}>
               <Switch defaultChecked={list.asksEmail} />
             </TableCell>
-            <TableCell>
+            <TableCell onClick={(e) => e.stopPropagation()}>
               <Switch defaultChecked={list.hasFilters} />
             </TableCell>
-            <TableCell>
+            <TableCell onClick={(e) => e.stopPropagation()}>
               <Button variant="ghost" size="icon-sm" className="cursor-pointer">
                 <Link className="size-4 text-icon-stroke" />
               </Button>
             </TableCell>
-            <TableCell>
+            <TableCell onClick={(e) => e.stopPropagation()}>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon-sm" className="cursor-pointer">
@@ -196,6 +214,10 @@ export function ListsTable({ data, pinnedIds, onPinChange, selected, onSelectedC
                       <Pin className="size-4 text-icon-stroke" />
                     )}
                     {pinnedIds.has(list.id) ? "Unpin" : "Pin"}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <ArchiveArrowUp className="size-4 text-icon-stroke" />
+                    Archive
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className="cursor-pointer text-destructive focus:text-destructive">

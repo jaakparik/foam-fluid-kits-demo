@@ -86,7 +86,7 @@ export function MediaKitsTable({ data, selected, onSelectedChange, avatarImages,
             <SortableHeader>Type</SortableHeader>
           </TableHead>
           <TableHead>
-            <SortableHeader>Date</SortableHeader>
+            <SortableHeader>Updated</SortableHeader>
           </TableHead>
           <TableHead>
             <SortableHeader>Shares</SortableHeader>

@@ -1,10 +1,14 @@
 import { createContext, useCallback, useContext, useState } from "react";
 
-type Page = "home" | "media-kits" | "pitch-kits" | "lists" | "campaign-reports";
+type Page = "home" | "media-kits" | "pitch-kits" | "lists" | "list-detail" | "empty-list" | "campaign-reports";
 
 interface NavigationContextValue {
   page: Page;
+  listDetailId: string | null;
+  listDetailTitle: string | null;
   navigate: (page: Page) => void;
+  navigateToListDetail: (listId: string) => void;
+  navigateToEmptyList: (title: string) => void;
 }
 
 const NavigationContext = createContext<NavigationContextValue | null>(null);
@@ -23,13 +27,29 @@ export function NavigationProvider({
   children: React.ReactNode;
 }) {
   const [page, setPage] = useState<Page>("home");
+  const [listDetailId, setListDetailId] = useState<string | null>(null);
+  const [listDetailTitle, setListDetailTitle] = useState<string | null>(null);
 
   const navigate = useCallback((p: Page) => {
     setPage(p);
+    if (p !== "list-detail") setListDetailId(null);
+    if (p !== "empty-list") setListDetailTitle(null);
+  }, []);
+
+  const navigateToListDetail = useCallback((listId: string) => {
+    setListDetailId(listId);
+    setListDetailTitle(null);
+    setPage("list-detail");
+  }, []);
+
+  const navigateToEmptyList = useCallback((title: string) => {
+    setListDetailTitle(title);
+    setListDetailId(null);
+    setPage("empty-list");
   }, []);
 
   return (
-    <NavigationContext.Provider value={{ page, navigate }}>
+    <NavigationContext.Provider value={{ page, listDetailId, listDetailTitle, navigate, navigateToListDetail, navigateToEmptyList }}>
       {children}
     </NavigationContext.Provider>
   );

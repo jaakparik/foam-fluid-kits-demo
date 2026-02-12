@@ -116,11 +116,6 @@ export const sidebarNav = {
       href: "/notifications",
       badge: "23",
     },
-    {
-      label: "Agency settings",
-      icon: "Cog" as const,
-      href: "/settings",
-    },
   ],
   user: {
     name: "Firstname Lastname",

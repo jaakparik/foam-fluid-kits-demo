@@ -52,6 +52,23 @@ function AvatarFallback({
   )
 }
 
+function AvatarIcon({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="avatar-icon"
+      className={cn(
+        "bg-muted text-icon flex size-full items-center justify-center rounded-full",
+        "[&>svg]:size-5 group-data-[size=sm]/avatar:[&>svg]:size-3.5 group-data-[size=lg]/avatar:[&>svg]:size-6",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 function AvatarBadge({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
@@ -101,6 +118,7 @@ export {
   Avatar,
   AvatarImage,
   AvatarFallback,
+  AvatarIcon,
   AvatarBadge,
   AvatarGroup,
   AvatarGroupCount,

@@ -386,6 +386,14 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
+                <SidebarMenuButton asChild onClick={() => setFooterOpen(false)}>
+                  <a href="/settings">
+                    <Cog className="size-4 text-icon-stroke" />
+                    <span>Agency settings</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <SidebarMenuButton className="cursor-pointer">

@@ -8,7 +8,10 @@ import { HomePage } from "@/pages/HomePage";
 import { MediaKitsPage } from "@/pages/MediaKitsPage";
 import { PitchKitsPage } from "@/pages/PitchKitsPage";
 import { ListsPage } from "@/pages/ListsPage";
+import { ListDetailPage } from "@/pages/ListDetailPage";
+import { EmptyListPage } from "@/pages/EmptyListPage";
 import { CampaignReportsPage } from "@/pages/CampaignReportsPage";
+import { Toaster } from "@/components/ui/sonner";
 
 function PageRouter() {
   const { page } = useNavigation();
@@ -20,6 +23,10 @@ function PageRouter() {
       return <PitchKitsPage />;
     case "lists":
       return <ListsPage />;
+    case "list-detail":
+      return <ListDetailPage />;
+    case "empty-list":
+      return <EmptyListPage />;
     case "campaign-reports":
       return <CampaignReportsPage />;
     case "home":
@@ -40,6 +47,7 @@ function App() {
               <PageRouter />
             </SidebarInset>
           </SidebarProvider>
+          <Toaster />
         </TooltipProvider>
       </NavigationProvider>
     </ThemeProvider>

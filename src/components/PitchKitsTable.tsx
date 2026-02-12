@@ -82,7 +82,7 @@ export function PitchKitsTable({ data, selected, onSelectedChange, thumbnailOver
             <SortableHeader>Owner</SortableHeader>
           </TableHead>
           <TableHead>
-            <SortableHeader>Date</SortableHeader>
+            <SortableHeader>Updated</SortableHeader>
           </TableHead>
           <TableHead>
             <SortableHeader>Shares</SortableHeader>

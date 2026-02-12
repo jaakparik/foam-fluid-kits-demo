@@ -38,6 +38,7 @@ export interface Talent {
   links: string[];
   avatarImage: string;
   verticals: string[];
+  managers: string[];
   instagramEngagementRate: string;
   connected: boolean;
 }
@@ -129,6 +130,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fashion_influencer.jpeg",
     verticals: ["Fashion", "Travel", "Wellness"],
+    managers: ["Sarah Chen", "Mike Rivera"],
     instagramEngagementRate: "6.80%",
     connected: true,
   },
@@ -166,6 +168,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_middle_aged_hoodie.jpeg",
     verticals: ["Tech", "Family", "Travel"],
+    managers: ["Jessica Park"],
     instagramEngagementRate: "5.40%",
     connected: false,
   },
@@ -203,6 +206,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_cooking_influencer.jpeg",
     verticals: ["Food", "Wellness", "Lifestyle"],
+    managers: ["David Kim", "Rachel Torres"],
     instagramEngagementRate: "7.10%",
     connected: false,
   },
@@ -240,6 +244,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_stylish_leaning.jpeg",
     verticals: ["Fashion", "Lifestyle", "Creativity"],
+    managers: ["Sarah Chen"],
     instagramEngagementRate: "6.20%",
     connected: false,
   },
@@ -277,6 +282,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_hoodie_couch.jpeg",
     verticals: ["Gaming", "Tech", "Creativity"],
+    managers: ["Alex Morgan"],
     instagramEngagementRate: "8.40%",
     connected: false,
   },
@@ -314,6 +320,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_musician_guitar.jpeg",
     verticals: ["Music", "Entertainment", "Lifestyle"],
+    managers: ["Nina Patel", "Chris Wong"],
     instagramEngagementRate: "9.20%",
     connected: true,
   },
@@ -351,6 +358,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fitness_influencer.jpeg",
     verticals: ["Fitness", "Dance", "Wellness"],
+    managers: ["Mike Rivera"],
     instagramEngagementRate: "7.50%",
     connected: false,
   },
@@ -388,6 +396,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_athletic_stretching.jpeg",
     verticals: ["Travel", "Sport", "Lifestyle"],
+    managers: ["Jessica Park", "Sarah Chen"],
     instagramEngagementRate: "6.90%",
     connected: false,
   },
@@ -425,6 +434,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_cooking_influencer.jpeg",
     verticals: ["Food", "Education", "Lifestyle"],
+    managers: ["Rachel Torres"],
     instagramEngagementRate: "8.10%",
     connected: false,
   },
@@ -462,6 +472,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_teen_skater_influencer.jpeg",
     verticals: ["Travel", "Lifestyle", "Advocacy"],
+    managers: ["David Kim"],
     instagramEngagementRate: "7.70%",
     connected: true,
   },
@@ -499,6 +510,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fashion_influencer.jpeg",
     verticals: ["Fashion", "Lifestyle", "Beauty"],
+    managers: ["Alex Morgan", "Nina Patel"],
     instagramEngagementRate: "6.50%",
     connected: true,
   },
@@ -536,6 +548,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_athletic_stretching.jpeg",
     verticals: ["Travel", "Lifestyle", "Entertainment"],
+    managers: ["Chris Wong"],
     instagramEngagementRate: "7.20%",
     connected: false,
   },
@@ -573,6 +586,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_teen_peace_sign.jpeg",
     verticals: ["Education", "Lifestyle", "Mental Health"],
+    managers: ["Sarah Chen"],
     instagramEngagementRate: "7.70%",
     connected: true,
   },
@@ -610,6 +624,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_middle_aged_laughing.jpeg",
     verticals: ["Entertainment", "Family", "Travel"],
+    managers: ["Mike Rivera", "Jessica Park"],
     instagramEngagementRate: "8.30%",
     connected: true,
   },
@@ -647,6 +662,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fitness_influencer.jpeg",
     verticals: ["Sport", "Travel", "Advocacy"],
+    managers: ["David Kim"],
     instagramEngagementRate: "6.40%",
     connected: false,
   },
@@ -684,6 +700,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_adjusting_tie.jpeg",
     verticals: ["Food", "Creativity", "Lifestyle"],
+    managers: ["Rachel Torres", "Alex Morgan"],
     instagramEngagementRate: "7.40%",
     connected: false,
   },
@@ -721,6 +738,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fitness_influencer.jpeg",
     verticals: ["Fitness", "Wellness", "Lifestyle"],
+    managers: ["Nina Patel"],
     instagramEngagementRate: "7.20%",
     connected: false,
   },
@@ -758,6 +776,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_athletic_stretching.jpeg",
     verticals: ["Sport", "Education", "Lifestyle"],
+    managers: ["Chris Wong"],
     instagramEngagementRate: "8.90%",
     connected: true,
   },
@@ -795,6 +814,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_teen_peace_sign.jpeg",
     verticals: ["Art", "Creativity", "Education"],
+    managers: ["Sarah Chen", "David Kim"],
     instagramEngagementRate: "6.80%",
     connected: false,
   },
@@ -832,6 +852,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_middle_aged_hoodie.jpeg",
     verticals: ["Food", "Lifestyle", "Advocacy"],
+    managers: ["Jessica Park"],
     instagramEngagementRate: "6.50%",
     connected: true,
   },
@@ -869,6 +890,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_teen_braces_goofy.jpeg",
     verticals: ["Comedy", "Lifestyle", "Entertainment"],
+    managers: ["Mike Rivera"],
     instagramEngagementRate: "8.30%",
     connected: false,
   },
@@ -906,6 +928,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_business_train.jpeg",
     verticals: ["Finance", "Education", "Lifestyle"],
+    managers: ["Rachel Torres"],
     instagramEngagementRate: "8.10%",
     connected: false,
   },
@@ -943,6 +966,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_dyed_hair.jpeg",
     verticals: ["Fashion", "DIY", "Advocacy"],
+    managers: ["Alex Morgan", "Nina Patel"],
     instagramEngagementRate: "9.00%",
     connected: false,
   },
@@ -980,6 +1004,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_hijab.jpeg",
     verticals: ["Fashion", "Lifestyle", "Advocacy"],
+    managers: ["Chris Wong"],
     instagramEngagementRate: "7.40%",
     connected: false,
   },
@@ -1017,6 +1042,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_mom_baby.jpeg",
     verticals: ["Family", "Lifestyle", "Comedy"],
+    managers: ["Sarah Chen"],
     instagramEngagementRate: "7.40%",
     connected: true,
   },
@@ -1054,6 +1080,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_music_vlogger.jpeg",
     verticals: ["Music", "Entertainment", "Lifestyle"],
+    managers: ["David Kim", "Mike Rivera"],
     instagramEngagementRate: "6.90%",
     connected: false,
   },
@@ -1091,6 +1118,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_party_host.jpeg",
     verticals: ["Entertainment", "Lifestyle", "Fashion"],
+    managers: ["Jessica Park"],
     instagramEngagementRate: "6.60%",
     connected: true,
   },
@@ -1128,6 +1156,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_streetwear_influencer.jpeg",
     verticals: ["Fashion", "Beauty", "Lifestyle"],
+    managers: ["Nina Patel"],
     instagramEngagementRate: "9.40%",
     connected: true,
   },
@@ -1165,6 +1194,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_middle_aged_kitchen.jpeg",
     verticals: ["Food", "Family", "Lifestyle"],
+    managers: ["Rachel Torres", "Chris Wong"],
     instagramEngagementRate: "8.90%",
     connected: false,
   },
@@ -1202,6 +1232,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_teen_acne_braces.jpeg",
     verticals: ["Gaming", "Comedy", "Entertainment"],
+    managers: ["Alex Morgan"],
     instagramEngagementRate: "7.50%",
     connected: true,
   },
@@ -1239,6 +1270,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_teen_braces.jpeg",
     verticals: ["Comedy", "Entertainment", "Lifestyle"],
+    managers: ["Sarah Chen"],
     instagramEngagementRate: "7.90%",
     connected: true,
   },
@@ -1276,6 +1308,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_car_dashboard.jpeg",
     verticals: ["Lifestyle", "Travel", "Food"],
+    managers: ["Mike Rivera"],
     instagramEngagementRate: "6.40%",
     connected: false,
   },
@@ -1313,6 +1346,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_bearded_mirror.jpeg",
     verticals: ["Beauty", "Lifestyle", "Wellness"],
+    managers: ["Jessica Park", "David Kim"],
     instagramEngagementRate: "9.30%",
     connected: true,
   },
@@ -1350,6 +1384,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_bearded_oversized_coat.jpeg",
     verticals: ["Fashion", "Lifestyle", "Creativity"],
+    managers: ["Rachel Torres"],
     instagramEngagementRate: "6.70%",
     connected: false,
   },
@@ -1387,6 +1422,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_car_selfie.jpeg",
     verticals: ["Lifestyle", "Tech", "Travel"],
+    managers: ["Nina Patel"],
     instagramEngagementRate: "6.50%",
     connected: false,
   },
@@ -1424,6 +1460,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_business_suit.jpeg",
     verticals: ["Finance", "Education", "Lifestyle"],
+    managers: ["Chris Wong", "Alex Morgan"],
     instagramEngagementRate: "6.20%",
     connected: true,
   },
@@ -1461,6 +1498,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_glasses.jpeg",
     verticals: ["Tech", "Education", "Lifestyle"],
+    managers: ["Sarah Chen"],
     instagramEngagementRate: "7.80%",
     connected: false,
   },
@@ -1498,6 +1536,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_middle_aged_balding_polo.jpeg",
     verticals: ["Finance", "Education", "Lifestyle"],
+    managers: ["Mike Rivera"],
     instagramEngagementRate: "7.10%",
     connected: false,
   },
@@ -1535,6 +1574,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_model_espresso.jpeg",
     verticals: ["Food", "Lifestyle", "Creativity"],
+    managers: ["Jessica Park"],
     instagramEngagementRate: "8.10%",
     connected: true,
   },
@@ -1572,6 +1612,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_relaxed_lounging.jpeg",
     verticals: ["Lifestyle", "Home/Decor", "Wellness"],
+    managers: ["David Kim", "Rachel Torres"],
     instagramEngagementRate: "7.00%",
     connected: true,
   },
@@ -1609,6 +1650,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_running_influencer.jpeg",
     verticals: ["Fitness", "Sport", "Wellness"],
+    managers: ["Nina Patel"],
     instagramEngagementRate: "8.70%",
     connected: true,
   },
@@ -1646,6 +1688,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_stylish_seated.jpeg",
     verticals: ["Travel", "Lifestyle", "Fashion"],
+    managers: ["Chris Wong"],
     instagramEngagementRate: "6.90%",
     connected: true,
   },
@@ -1683,6 +1726,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_vintage_leather.jpeg",
     verticals: ["Fashion", "Creativity", "Lifestyle"],
+    managers: ["Alex Morgan", "Sarah Chen"],
     instagramEngagementRate: "7.40%",
     connected: false,
   },
@@ -1720,6 +1764,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_zoom_call.jpeg",
     verticals: ["Tech", "Finance", "Education"],
+    managers: ["Mike Rivera"],
     instagramEngagementRate: "1.00%",
     connected: true,
   },
@@ -1757,6 +1802,7 @@ export const talents: Talent[] = [
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_elderly_plaid_shirt.jpeg",
     verticals: ["DIY", "Education", "Lifestyle"],
+    managers: ["Jessica Park"],
     instagramEngagementRate: "7.60%",
     connected: true,
   },

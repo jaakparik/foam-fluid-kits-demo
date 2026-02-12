@@ -6,10 +6,13 @@ import {
   LogoFileSheet,
   Copy,
   Trash,
+  ArchiveArrowUp,
   Pin,
   PinFill,
   Images,
+  UserDuotone,
 } from "foamicons";
+import { Avatar, AvatarIcon } from "@/components/ui/avatar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,6 +32,7 @@ interface ListCardProps {
   onPinChange?: (pinned: boolean) => void;
   onEditThumbnail?: () => void;
   customAvatars?: string[];
+  onClick?: () => void;
 }
 
 function AvatarGroup({
@@ -38,6 +42,23 @@ function AvatarGroup({
   avatars: string[];
   count: number;
 }) {
+  if (avatars.length === 0) {
+    return (
+      <div className="flex items-center gap-2">
+        <div className="flex items-center -space-x-2">
+          {[0, 1, 2].map((i) => (
+            <Avatar key={i} size="lg" className="border-2 border-background">
+              <AvatarIcon>
+                <UserDuotone />
+              </AvatarIcon>
+            </Avatar>
+          ))}
+        </div>
+        <span className={`text-sm ${count === 0 ? "text-destructive" : "text-muted-foreground"}`}>{count}</span>
+      </div>
+    );
+  }
+
   return (
     <div className="flex items-center gap-2">
       <div className="flex items-center -space-x-2">
@@ -50,16 +71,17 @@ function AvatarGroup({
           />
         ))}
       </div>
-      <span className="text-sm text-muted-foreground">{count}</span>
+      <span className={`text-sm ${count === 0 ? "text-destructive" : "text-muted-foreground"}`}>{count}</span>
     </div>
   );
 }
 
-export function ListCard({ list, selected, onSelectChange, pinned, onPinChange, onEditThumbnail, customAvatars }: ListCardProps) {
+export function ListCard({ list, selected, onSelectChange, pinned, onPinChange, onEditThumbnail, customAvatars, onClick }: ListCardProps) {
   const PinIcon = pinned ? PinFill : Pin;
 
   return (
     <div
+      onClick={onClick}
       className={`group relative flex cursor-pointer flex-col gap-2 rounded-xl border p-4 transition-colors ${
         selected
           ? "border-brand bg-brand-tint"
@@ -68,6 +90,7 @@ export function ListCard({ list, selected, onSelectChange, pinned, onPinChange, 
     >
       {/* Checkbox — visible on hover or when selected */}
       <div
+        onClick={(e) => e.stopPropagation()}
         className={`absolute top-3 right-3 ${
           selected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
         } transition-opacity`}
@@ -93,7 +116,7 @@ export function ListCard({ list, selected, onSelectChange, pinned, onPinChange, 
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-2 pt-1">
+      <div className="flex items-center gap-2 pt-1" onClick={(e) => e.stopPropagation()}>
         <Button variant="secondary" size="sm" className="flex-1 cursor-pointer">
           Share
         </Button>
@@ -144,6 +167,10 @@ export function ListCard({ list, selected, onSelectChange, pinned, onPinChange, 
                 <Pin className="size-4 text-icon-stroke" />
               )}
               {pinned ? "Unpin" : "Pin"}
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <ArchiveArrowUp className="size-4 text-icon-stroke" />
+              Archive
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer text-destructive focus:text-destructive">

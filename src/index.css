@@ -16,6 +16,7 @@
   --secondary: rgb(248, 250, 252);
   --secondary-foreground: rgb(69, 85, 108);
   --muted: rgb(248, 250, 252);
+  --muted-50: rgba(251, 252, 253);
   --muted-foreground: rgb(144, 161, 185);
   --accent: rgb(239, 246, 255);
   --accent-foreground: rgb(28, 57, 142);
@@ -29,6 +30,7 @@
   --sidebar-primary: rgb(29, 41, 61);
   --brand: rgb(20, 71, 230);
   --brand-tint: rgba(20, 71, 230, 0.05);
+  --brand-tint-solid: rgb(243, 246, 254);
   --sidebar-primary-foreground: rgb(250, 250, 250);
   --sidebar-accent: rgb(226, 232, 240);
   --sidebar-accent-foreground: rgb(15, 23, 43);
@@ -101,6 +103,7 @@
   --secondary: rgb(38, 38, 38);
   --secondary-foreground: rgb(250, 250, 250);
   --muted: rgb(38, 38, 38);
+  --muted-50: rgba(24, 24, 24);
   --muted-foreground: rgb(161, 161, 161);
   --accent: rgba(255, 255, 255, 0.05);
   --accent-foreground: rgb(250, 250, 250);
@@ -113,6 +116,7 @@
   --sidebar-foreground: rgb(250, 250, 250);
   --sidebar-primary: rgb(20, 71, 230);
   --brand-tint: rgba(20, 71, 230, 0.1);
+  --brand-tint-solid: rgb(11, 16, 32);
   --sidebar-accent: rgb(39, 39, 42);
   --sidebar-accent-foreground: rgb(250, 250, 250);
   --sidebar-border: rgb(40, 40, 40);
@@ -144,6 +148,7 @@
 @theme inline {
   --color-brand: var(--brand);
   --color-brand-tint: var(--brand-tint);
+  --color-brand-tint-solid: var(--brand-tint-solid);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -155,6 +160,7 @@
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
+  --color-muted-50: var(--muted-50);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
