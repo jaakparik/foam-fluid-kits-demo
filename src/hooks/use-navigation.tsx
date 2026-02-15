@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useState } from "react";
 
-type Page = "home" | "media-kits" | "pitch-kits" | "lists" | "list-detail" | "empty-list" | "campaign-reports";
+type Page = "home" | "media-kits" | "pitch-kits" | "lists" | "list-detail" | "empty-list" | "campaign-reports" | "talent-directory";
 
 interface NavigationContextValue {
   page: Page;

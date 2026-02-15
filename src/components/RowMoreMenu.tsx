@@ -39,17 +39,21 @@ export function RowMoreMenu({ onEditNote }: RowMoreMenuProps) {
           }
         }}
       >
-        <DropdownMenuItem
-          className="cursor-pointer gap-2"
-          onSelect={() => {
-            willEditNote.current = true;
-            onEditNote?.();
-          }}
-        >
-          <Pencil className="size-4" />
-          Edit Note
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        {onEditNote && (
+          <>
+            <DropdownMenuItem
+              className="cursor-pointer gap-2"
+              onSelect={() => {
+                willEditNote.current = true;
+                onEditNote();
+              }}
+            >
+              <Pencil className="size-4" />
+              Edit Note
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </>
+        )}
         <DropdownMenuItem className="cursor-pointer gap-2">
           <User className="size-4" />
           View profile

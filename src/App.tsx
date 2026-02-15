@@ -11,6 +11,7 @@ import { ListsPage } from "@/pages/ListsPage";
 import { ListDetailPage } from "@/pages/ListDetailPage";
 import { EmptyListPage } from "@/pages/EmptyListPage";
 import { CampaignReportsPage } from "@/pages/CampaignReportsPage";
+import { TalentDirectoryPage } from "@/pages/TalentDirectoryPage";
 import { Toaster } from "@/components/ui/sonner";
 
 function PageRouter() {
@@ -29,6 +30,8 @@ function PageRouter() {
       return <EmptyListPage />;
     case "campaign-reports":
       return <CampaignReportsPage />;
+    case "talent-directory":
+      return <TalentDirectoryPage />;
     case "home":
     default:
       return <HomePage />;
