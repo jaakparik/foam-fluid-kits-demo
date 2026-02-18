@@ -35,6 +35,19 @@ export function TalentDirectoryRow({ row }: { row: Row }) {
           const colId = cell.column.id;
           const isLeftSticky = colId in stickyLeft;
 
+          if (colId === "save") {
+            return (
+              <td
+                key={cell.id}
+                className={cn(
+                  "sticky right-[40px] z-10 p-2 align-middle whitespace-nowrap transition-colors",
+                  stickyBg,
+                )}
+              >
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </td>
+            );
+          }
           if (colId === "more") {
             return (
               <td

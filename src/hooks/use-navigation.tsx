@@ -15,6 +15,7 @@ const NavigationContext = createContext<NavigationContextValue | null>(null);
 
 const hrefToPage: Record<string, Page> = {
   "/": "home",
+  "/talent": "talent-directory",
   "/shared/media-kits": "media-kits",
   "/shared/pitch-kits": "pitch-kits",
   "/shared/lists": "lists",

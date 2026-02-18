@@ -6,10 +6,14 @@ import {
   LogoTiktok,
   LogoYoutube,
 } from "foamicons";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { Bookmark } from "foamicons";
+import { Button } from "@/components/ui/button";
 import { RowMoreMenu } from "@/components/RowMoreMenu";
+import { ConnectionStatusBadge } from "@/components/ConnectionStatusBadge";
 import type { Talent } from "@/data/talents";
 
 export const detailColumnOptions = [
@@ -18,11 +22,13 @@ export const detailColumnOptions = [
   { id: "age", label: "Age" },
   { id: "gender", label: "Gender" },
   { id: "location", label: "Location" },
+  { id: "status", label: "Status" },
   { id: "ig", label: "Instagram" },
   { id: "sn", label: "Snapchat" },
   { id: "tt", label: "TikTok" },
   { id: "yt", label: "YouTube" },
   { id: "links", label: "Links" },
+  { id: "posts", label: "Posts gallery" },
   { id: "manager", label: "Manager" },
 ];
 
@@ -127,6 +133,44 @@ export const columns: ColumnDef<Talent>[] = [
     ),
   },
   {
+    id: "manager",
+    header: "Manager",
+    cell: ({ row }) => {
+      const managers = row.original.managers;
+      if (!managers || managers.length === 0) {
+        return <span className="text-muted-foreground">-</span>;
+      }
+      const first = managers[0];
+      const rest = managers.length - 1;
+      const email = managers.map((m) => m.toLowerCase().replace(/\s+/g, ".") + "@foam.co").join(", ");
+
+      function handleCopy(e: React.MouseEvent) {
+        e.stopPropagation();
+        navigator.clipboard.writeText(email);
+        toast.success("Manager email copied to clipboard");
+      }
+
+      return (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span
+              className="text-muted-foreground whitespace-nowrap cursor-pointer"
+              onClick={handleCopy}
+            >
+              {first}
+              {rest > 0 && <span className="text-muted-foreground/60"> +{rest}</span>}
+            </span>
+          </TooltipTrigger>
+          <TooltipContent side="bottom" className="flex flex-col items-start">
+            <span>{managers.join(", ")}</span>
+            <span className="text-muted-foreground">Click to copy email</span>
+          </TooltipContent>
+        </Tooltip>
+      );
+    },
+    enableSorting: false,
+  },
+  {
     accessorKey: "bio",
     header: "Biography",
     cell: ({ row }) => (
@@ -176,6 +220,30 @@ export const columns: ColumnDef<Talent>[] = [
     cell: ({ row }) => (
       <span className="text-muted-foreground whitespace-nowrap">{row.original.location}</span>
     ),
+  },
+  {
+    id: "status",
+    header: "Status",
+    cell: ({ row }) => {
+      const platforms: { key: keyof Talent["connections"]; label: string }[] = [
+        { key: "instagram", label: "IG" },
+        { key: "snapchat", label: "SN" },
+        { key: "tiktok", label: "TT" },
+        { key: "youtube", label: "YT" },
+      ];
+      return (
+        <div className="flex items-center gap-1">
+          {platforms.map(({ key, label }) => (
+            <ConnectionStatusBadge
+              key={key}
+              status={row.original.connections[key]}
+              label={label}
+            />
+          ))}
+        </div>
+      );
+    },
+    enableSorting: false,
   },
   {
     id: "ig",
@@ -260,31 +328,20 @@ export const columns: ColumnDef<Talent>[] = [
     enableSorting: false,
   },
   {
-    id: "manager",
-    header: "Manager",
-    cell: ({ row }) => {
-      const managers = row.original.managers;
-      if (!managers || managers.length === 0) {
-        return <span className="text-muted-foreground">-</span>;
-      }
-      const first = managers[0];
-      const rest = managers.length - 1;
-      if (rest === 0) {
-        return <span className="text-muted-foreground whitespace-nowrap">{first}</span>;
-      }
-      return (
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <span className="text-muted-foreground whitespace-nowrap cursor-default">
-              {first} <span className="text-muted-foreground/60">+{rest}</span>
-            </span>
-          </TooltipTrigger>
-          <TooltipContent side="bottom">
-            {managers.join(", ")}
-          </TooltipContent>
-        </Tooltip>
-      );
-    },
+    id: "save",
+    header: () => null,
+    cell: () => (
+      <Button
+        variant="ghost"
+        size="icon-sm"
+        className="cursor-pointer"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Bookmark className="size-4 text-icon-stroke" />
+      </Button>
+    ),
+    size: 40,
+    minSize: 40,
     enableSorting: false,
   },
   {

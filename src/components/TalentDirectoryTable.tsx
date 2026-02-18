@@ -13,11 +13,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { talents } from "@/data/talents";
+import type { Talent } from "@/data/talents";
 import { columns } from "@/components/listDetailColumns";
 import { TalentDirectoryRow } from "@/components/TalentDirectoryRow";
-
-const rows = talents.slice(0, 45);
 
 // Remove the "sort" (drag handle) column
 const directoryColumns = columns.filter((col) => {
@@ -26,6 +24,8 @@ const directoryColumns = columns.filter((col) => {
 });
 
 interface TalentDirectoryTableProps {
+  data: Talent[];
+  columnOrder?: string[];
   columnVisibility: VisibilityState;
   onColumnVisibilityChange: (updater: VisibilityState | ((prev: VisibilityState) => VisibilityState)) => void;
   sorting: SortingState;
@@ -35,6 +35,8 @@ interface TalentDirectoryTableProps {
 }
 
 export function TalentDirectoryTable({
+  data,
+  columnOrder,
   columnVisibility,
   onColumnVisibilityChange,
   sorting,
@@ -43,9 +45,9 @@ export function TalentDirectoryTable({
   onRowSelectionChange,
 }: TalentDirectoryTableProps) {
   const table = useReactTable({
-    data: rows,
+    data,
     columns: directoryColumns,
-    state: { rowSelection, sorting, columnVisibility },
+    state: { rowSelection, sorting, columnVisibility, columnOrder },
     onRowSelectionChange,
     onSortingChange,
     onColumnVisibilityChange,
@@ -68,12 +70,13 @@ export function TalentDirectoryTable({
             {headerGroup.headers.map((header) => {
               const colId = header.column.id;
               const isLeftSticky = colId in stickyLeft;
-              const isMore = colId === "more";
               let headerClass = "sticky top-0 z-20 bg-background";
               if (isLeftSticky) {
                 headerClass = `sticky top-0 ${stickyLeft[colId]} z-30 bg-background`;
-              } else if (isMore) {
+              } else if (colId === "more") {
                 headerClass = "sticky top-0 right-0 z-30 bg-background";
+              } else if (colId === "save") {
+                headerClass = "sticky top-0 right-[40px] z-30 bg-background";
               }
               return (
                 <TableHead

@@ -125,7 +125,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://pinterest.com/sophiamartinezstyle",
-      "https://linkedin.com/in/sophiamartinez",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fashion_influencer.jpeg",
@@ -163,7 +162,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://liamturnerfilms.com",
-      "https://github.com/liamturner",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_middle_aged_hoodie.jpeg",
@@ -199,10 +197,7 @@ export const talents: Talent[] = [
       snapchat: "jasminlee",
       youtube: "jasminlee",
     },
-    links: [
-      "https://jasminleecooks.com",
-      "https://pinterest.com/jasminleecooks",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_cooking_influencer.jpeg",
     verticals: ["Food", "Wellness", "Lifestyle"],
@@ -238,7 +233,6 @@ export const talents: Talent[] = [
       youtube: "marcushill",
     },
     links: [
-      "https://hypebeast.com/marcushill",
       "https://depop.com/marcushill",
     ],
     avatarImage:
@@ -275,10 +269,7 @@ export const talents: Talent[] = [
       snapchat: "chloenguyen",
       youtube: "chloenguyen",
     },
-    links: [
-      "https://behance.net/chloenguyen",
-      "https://twitch.tv/chloenguyen",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_hoodie_couch.jpeg",
     verticals: ["Gaming", "Tech", "Creativity"],
@@ -315,7 +306,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://spotify.com/artist/ryanbrooks",
-      "https://soundcloud.com/ryanbrooksmusic",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_musician_guitar.jpeg",
@@ -353,7 +343,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://alexiscarterfit.com",
-      "https://medium.com/@alexiscarterfit",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fitness_influencer.jpeg",
@@ -389,10 +378,7 @@ export const talents: Talent[] = [
       snapchat: "ethanrossphoto",
       youtube: "ethanrossphoto",
     },
-    links: [
-      "https://natgeo.com/ethanross",
-      "https://500px.com/ethanross",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_athletic_stretching.jpeg",
     verticals: ["Travel", "Sport", "Lifestyle"],
@@ -429,7 +415,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://miatorreskitchen.com",
-      "https://pinterest.com/miatorreskitchen",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_cooking_influencer.jpeg",
@@ -465,10 +450,7 @@ export const talents: Talent[] = [
       snapchat: "noahbennett",
       youtube: "noahbennett",
     },
-    links: [
-      "https://noahbennettvanlife.com",
-      "https://linkedin.com/in/noahbennett",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_teen_skater_influencer.jpeg",
     verticals: ["Travel", "Lifestyle", "Advocacy"],
@@ -505,7 +487,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://pinterest.com/oliviaharperstyle",
-      "https://medium.com/@oliviaharperstyle",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fashion_influencer.jpeg",
@@ -579,10 +560,7 @@ export const talents: Talent[] = [
       snapchat: "harperjames",
       youtube: "harperjames",
     },
-    links: [
-      "https://pinterest.com/harperjames",
-      "https://linkedin.com/in/harperjames",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_teen_peace_sign.jpeg",
     verticals: ["Education", "Lifestyle", "Mental Health"],
@@ -618,7 +596,6 @@ export const talents: Talent[] = [
       youtube: "loganprice",
     },
     links: [
-      "https://youtube.com/loganpriceparks",
       "https://loganpriceparks.com",
     ],
     avatarImage:
@@ -694,7 +671,6 @@ export const talents: Talent[] = [
       youtube: "cartermiller",
     },
     links: [
-      "https://pinterest.com/cartermillerchef",
       "https://cartermillerkitchen.com",
     ],
     avatarImage:
@@ -731,10 +707,7 @@ export const talents: Talent[] = [
       snapchat: "avascottfit",
       youtube: "avascottfit",
     },
-    links: [
-      "https://avascottfit.com",
-      "https://pinterest.com/avascottfit",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_fitness_influencer.jpeg",
     verticals: ["Fitness", "Wellness", "Lifestyle"],
@@ -770,7 +743,6 @@ export const talents: Talent[] = [
       youtube: "huntergray",
     },
     links: [
-      "https://youtube.com/huntergrayoutdoors",
       "https://huntergrayoutdoors.com",
     ],
     avatarImage:
@@ -808,7 +780,6 @@ export const talents: Talent[] = [
       youtube: "ellabrooksart",
     },
     links: [
-      "https://behance.net/ellabrooks",
       "https://etsy.com/shop/ellabrooksart",
     ],
     avatarImage:
@@ -845,10 +816,7 @@ export const talents: Talent[] = [
       snapchat: "masonblake",
       youtube: "masonblake",
     },
-    links: [
-      "https://masonblakeforaging.com",
-      "https://pinterest.com/masonblake",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_middle_aged_hoodie.jpeg",
     verticals: ["Food", "Lifestyle", "Advocacy"],
@@ -883,10 +851,7 @@ export const talents: Talent[] = [
       snapchat: "emilycarter",
       youtube: "emilycarter",
     },
-    links: [
-      "https://pinterest.com/emilycarterfun",
-      "https://emilyslaughs.com",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_teen_braces_goofy.jpeg",
     verticals: ["Comedy", "Lifestyle", "Entertainment"],
@@ -923,7 +888,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://linkedin.com/in/rachelhayes",
-      "https://medium.com/@rachelhayes",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_business_train.jpeg",
@@ -961,7 +925,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://depop.com/zoerivers",
-      "https://zoeriversstyle.com",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_dyed_hair.jpeg",
@@ -997,10 +960,7 @@ export const talents: Talent[] = [
       snapchat: "amirakhan",
       youtube: "amirakhan",
     },
-    links: [
-      "https://pinterest.com/amirakhanstyle",
-      "https://linkedin.com/in/amirakhan",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_hijab.jpeg",
     verticals: ["Fashion", "Lifestyle", "Advocacy"],
@@ -1037,7 +997,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://laurenblakemomlife.com",
-      "https://pinterest.com/laurenblakemomlife",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_mom_baby.jpeg",
@@ -1073,10 +1032,7 @@ export const talents: Talent[] = [
       snapchat: "harperlanemusic",
       youtube: "harperlanemusic",
     },
-    links: [
-      "https://spotify.com/harperlane",
-      "https://soundcloud.com/harperlane",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_music_vlogger.jpeg",
     verticals: ["Music", "Entertainment", "Lifestyle"],
@@ -1113,7 +1069,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://bellaortiz.com",
-      "https://pinterest.com/bellaortizparty",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_party_host.jpeg",
@@ -1149,10 +1104,7 @@ export const talents: Talent[] = [
       snapchat: "sashakim",
       youtube: "sashakim",
     },
-    links: [
-      "https://depop.com/sashakim",
-      "https://pinterest.com/sashakim",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_young_adult_streetwear_influencer.jpeg",
     verticals: ["Fashion", "Beauty", "Lifestyle"],
@@ -1189,7 +1141,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://dianebrookskitchen.com",
-      "https://pinterest.com/dianebrookskitchen",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/female/female_middle_aged_kitchen.jpeg",
@@ -1225,10 +1176,7 @@ export const talents: Talent[] = [
       snapchat: "jakemiller",
       youtube: "jakemiller",
     },
-    links: [
-      "https://youtube.com/jakemiller",
-      "https://pinterest.com/jakemiller",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_teen_acne_braces.jpeg",
     verticals: ["Gaming", "Comedy", "Entertainment"],
@@ -1263,10 +1211,7 @@ export const talents: Talent[] = [
       snapchat: "noahfoster",
       youtube: "noahfoster",
     },
-    links: [
-      "https://noahfosterfun.com",
-      "https://pinterest.com/noahfoster",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_teen_braces.jpeg",
     verticals: ["Comedy", "Entertainment", "Lifestyle"],
@@ -1301,10 +1246,7 @@ export const talents: Talent[] = [
       snapchat: "alexprice",
       youtube: "alexprice",
     },
-    links: [
-      "https://youtube.com/alexpricevlogs",
-      "https://alexpricevlogs.com",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_car_dashboard.jpeg",
     verticals: ["Lifestyle", "Travel", "Food"],
@@ -1341,7 +1283,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://ethangraygrooming.com",
-      "https://pinterest.com/ethangray",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_bearded_mirror.jpeg",
@@ -1379,7 +1320,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://depop.com/lucarossi",
-      "https://pinterest.com/lucarossi",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_bearded_oversized_coat.jpeg",
@@ -1416,7 +1356,6 @@ export const talents: Talent[] = [
       youtube: "jordanmiles",
     },
     links: [
-      "https://youtube.com/jordanmilescars",
       "https://jordanmilescars.com",
     ],
     avatarImage:
@@ -1455,7 +1394,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://linkedin.com/in/samuelhayes",
-      "https://medium.com/@samuelhayes",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_business_suit.jpeg",
@@ -1493,7 +1431,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://github.com/oliverkim",
-      "https://linkedin.com/in/oliverkim",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_glasses.jpeg",
@@ -1529,10 +1466,7 @@ export const talents: Talent[] = [
       snapchat: "nathancole",
       youtube: "nathancole",
     },
-    links: [
-      "https://linkedin.com/in/nathancole",
-      "https://medium.com/@nathancole",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_middle_aged_balding_polo.jpeg",
     verticals: ["Finance", "Education", "Lifestyle"],
@@ -1568,7 +1502,6 @@ export const talents: Talent[] = [
       youtube: "adrianvega",
     },
     links: [
-      "https://pinterest.com/adrianvegafood",
       "https://adrianvegakitchen.com",
     ],
     avatarImage:
@@ -1605,10 +1538,7 @@ export const talents: Talent[] = [
       snapchat: "tylerbrooks",
       youtube: "tylerbrooks",
     },
-    links: [
-      "https://youtube.com/tylerbrooks",
-      "https://tylerbrookslife.com",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_relaxed_lounging.jpeg",
     verticals: ["Lifestyle", "Home/Decor", "Wellness"],
@@ -1645,7 +1575,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://strava.com/athletes/jakethompson",
-      "https://jakethompsonrun.com",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_running_influencer.jpeg",
@@ -1681,10 +1610,7 @@ export const talents: Talent[] = [
       snapchat: "chrisallen",
       youtube: "chrisallen",
     },
-    links: [
-      "https://pinterest.com/chrisallenstyle",
-      "https://chrisallenlifestyle.com",
-    ],
+    links: [],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_stylish_seated.jpeg",
     verticals: ["Travel", "Lifestyle", "Fashion"],
@@ -1721,7 +1647,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://depop.com/vincentross",
-      "https://pinterest.com/vincentross",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_young_adult_vintage_leather.jpeg",
@@ -1797,7 +1722,6 @@ export const talents: Talent[] = [
     },
     links: [
       "https://waltergreencrafts.com",
-      "https://pinterest.com/waltergreen",
     ],
     avatarImage:
       "https://proto.dev.foam.io/assets/avatars/male/male_elderly_plaid_shirt.jpeg",

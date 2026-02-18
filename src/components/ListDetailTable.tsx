@@ -38,6 +38,7 @@ const initialRows = talents.slice(0, 45);
 const initialOrder = initialRows.map((r) => r.id);
 
 interface ListDetailTableProps {
+  columnOrder?: string[];
   columnVisibility: VisibilityState;
   onColumnVisibilityChange: (updater: VisibilityState | ((prev: VisibilityState) => VisibilityState)) => void;
   sorting: SortingState;
@@ -48,6 +49,7 @@ interface ListDetailTableProps {
 }
 
 export function ListDetailTable({
+  columnOrder,
   columnVisibility,
   onColumnVisibilityChange,
   sorting,
@@ -67,7 +69,7 @@ export function ListDetailTable({
   const table = useReactTable({
     data: sortedData,
     columns,
-    state: { rowSelection, sorting, columnVisibility },
+    state: { rowSelection, sorting, columnVisibility, columnOrder },
     onRowSelectionChange: onRowSelectionChange,
     onSortingChange,
     onColumnVisibilityChange,

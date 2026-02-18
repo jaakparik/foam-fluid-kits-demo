@@ -3,7 +3,7 @@ import {
   ArrowLeft,
   ChevronDown,
   List,
-  Grid2x2,
+  LayoutRows,
   ListFilter,
   ArrowDownUp,
   ArrowDownNarrowWide,
@@ -19,7 +19,26 @@ import {
   Plus,
   Pencil,
   Share,
+  GripHorizontal,
 } from "foamicons";
+import {
+  DndContext,
+  type DragEndEvent,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  closestCenter,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  arrayMove,
+  useSortable,
+} from "@dnd-kit/sortable";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -29,6 +48,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Checkbox } from "@/components/ui/checkbox";
 import { CreatorFilterPopover } from "@/components/CreatorFilterPopover";
 import type { SortOption } from "@/components/listDetailColumns";
 
@@ -54,6 +75,7 @@ interface DataToolbarProps {
   columnOptions?: ColumnOption[];
   columnVisibility?: Record<string, boolean>;
   onColumnVisibilityChange?: (columnId: string, visible: boolean) => void;
+  onColumnOptionsReorder?: (reordered: ColumnOption[]) => void;
   sortOptions?: SortOption[];
   activeSortId?: string | null;
   activeSortDesc?: boolean;
@@ -119,6 +141,124 @@ function InlineEditableTitle({
   );
 }
 
+function SortableColumnItem({
+  col,
+  checked,
+  onCheckedChange,
+  reorderable,
+}: {
+  col: ColumnOption;
+  checked: boolean;
+  onCheckedChange: (checked: boolean) => void;
+  reorderable: boolean;
+}) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: col.id, disabled: !reorderable });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent cursor-default"
+    >
+      {reorderable && (
+        <button
+          className="flex items-center justify-center cursor-grab active:cursor-grabbing shrink-0"
+          {...attributes}
+          {...listeners}
+        >
+          <GripHorizontal className="size-3.5 text-icon-stroke-muted" />
+        </button>
+      )}
+      <Checkbox
+        checked={checked}
+        onCheckedChange={(value) => onCheckedChange(!!value)}
+        className="shrink-0"
+      />
+      <span className="flex-1 select-none">{col.label}</span>
+    </div>
+  );
+}
+
+function ColumnOptionsPopover({
+  columnOptions,
+  columnVisibility,
+  onColumnVisibilityChange,
+  onColumnOptionsReorder,
+  reorderable,
+}: {
+  columnOptions: ColumnOption[];
+  columnVisibility: Record<string, boolean>;
+  onColumnVisibilityChange: (columnId: string, visible: boolean) => void;
+  onColumnOptionsReorder?: (reordered: ColumnOption[]) => void;
+  reorderable: boolean;
+}) {
+  const sensors = useSensors(
+    useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 5 } }),
+    useSensor(KeyboardSensor),
+  );
+
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      const oldIndex = columnOptions.findIndex((c) => c.id === active.id);
+      const newIndex = columnOptions.findIndex((c) => c.id === over.id);
+      onColumnOptionsReorder?.(arrayMove(columnOptions, oldIndex, newIndex));
+    }
+  }
+
+  const itemIds = columnOptions.map((c) => c.id);
+
+  const items = columnOptions.map((col) => (
+    <SortableColumnItem
+      key={col.id}
+      col={col}
+      checked={columnVisibility[col.id] !== false}
+      onCheckedChange={(checked) => onColumnVisibilityChange(col.id, checked)}
+      reorderable={reorderable}
+    />
+  ));
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="ghost" size="icon-sm" className="bg-secondary cursor-pointer">
+          <SlidersHorizontal className="size-4" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent align="end" className="w-[200px] p-1">
+        {reorderable ? (
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+            modifiers={[restrictToVerticalAxis]}
+          >
+            <SortableContext items={itemIds} strategy={verticalListSortingStrategy}>
+              {items}
+            </SortableContext>
+          </DndContext>
+        ) : (
+          items
+        )}
+      </PopoverContent>
+    </Popover>
+  );
+}
+
 export function DataToolbar({
   label,
   labelOptions,
@@ -136,6 +276,7 @@ export function DataToolbar({
   columnOptions,
   columnVisibility,
   onColumnVisibilityChange,
+  onColumnOptionsReorder,
   sortOptions,
   activeSortId,
   activeSortDesc,
@@ -234,7 +375,7 @@ export function DataToolbar({
                 : "text-icon-stroke hover:bg-secondary/50"
             }`}
           >
-            <Grid2x2 className="size-4" />
+            <LayoutRows className="size-4" />
           </button>
         </div>
 
@@ -317,26 +458,13 @@ export function DataToolbar({
 
         {/* Options button */}
         {columnOptions && columnVisibility && onColumnVisibilityChange ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon-sm" className="bg-secondary cursor-pointer">
-                <SlidersHorizontal className="size-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {columnOptions.map((col) => (
-                <DropdownMenuCheckboxItem
-                  key={col.id}
-                  checked={columnVisibility[col.id] !== false}
-                  onCheckedChange={(checked) => onColumnVisibilityChange(col.id, !!checked)}
-                  onSelect={(e) => e.preventDefault()}
-                  className="cursor-pointer"
-                >
-                  {col.label}
-                </DropdownMenuCheckboxItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <ColumnOptionsPopover
+            columnOptions={columnOptions}
+            columnVisibility={columnVisibility}
+            onColumnVisibilityChange={onColumnVisibilityChange}
+            onColumnOptionsReorder={onColumnOptionsReorder}
+            reorderable={view === "table"}
+          />
         ) : (
           <Button variant="ghost" size="icon-sm" className="bg-secondary cursor-pointer">
             <SlidersHorizontal className="size-4" />

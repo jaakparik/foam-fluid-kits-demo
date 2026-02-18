@@ -1,5 +1,5 @@
 import { talents } from "@/data/talents";
-import { coffeeVideos, tiktokVideos, nikeImages } from "@/data/thumbnails";
+import { coffeeVideos, tiktokVideos, nikeImages, coffeeThumbnails } from "@/data/thumbnails";
 import type { Platform } from "@/data/platformIcons";
 
 export interface Post {
@@ -75,31 +75,57 @@ const postDates = [
 ];
 
 // Seed a deterministic set of posts using all available video/image assets
-const allMedia: { thumbnail: string; video?: string; platform: Platform }[] = [];
+// Need at least 450 posts (45 talents × 10 posts each)
+const baseMedia: { thumbnail: string; video?: string; platform: Platform }[] = [];
 
-// Coffee videos → youtube
+// Coffee videos → youtube (8)
 for (const cv of coffeeVideos) {
-  allMedia.push({ thumbnail: cv.thumbnail, video: cv.video, platform: "youtube" });
+  baseMedia.push({ thumbnail: cv.thumbnail, video: cv.video, platform: "youtube" });
 }
-// TikTok videos → tiktok
+// TikTok videos → tiktok (7)
 for (const tv of tiktokVideos) {
-  allMedia.push({ thumbnail: tv.thumbnail, video: tv.video, platform: "tiktok" });
+  baseMedia.push({ thumbnail: tv.thumbnail, video: tv.video, platform: "tiktok" });
 }
-// Nike images → instagram
+// Nike images → instagram (4)
 for (const img of nikeImages) {
-  allMedia.push({ thumbnail: img, platform: "instagram" });
+  baseMedia.push({ thumbnail: img, platform: "instagram" });
 }
-// Repeat coffee videos as instagram content
+// Coffee videos as instagram content (8)
 for (const cv of coffeeVideos) {
-  allMedia.push({ thumbnail: cv.thumbnail, video: cv.video, platform: "instagram" });
+  baseMedia.push({ thumbnail: cv.thumbnail, video: cv.video, platform: "instagram" });
 }
-// Repeat tiktok videos as snap content
+// TikTok videos as snap content (7)
 for (const tv of tiktokVideos) {
-  allMedia.push({ thumbnail: tv.thumbnail, video: tv.video, platform: "snap" });
+  baseMedia.push({ thumbnail: tv.thumbnail, video: tv.video, platform: "snap" });
 }
-// More coffee videos as tiktok
-for (const cv of coffeeVideos.slice(0, 6)) {
-  allMedia.push({ thumbnail: cv.thumbnail, video: cv.video, platform: "tiktok" });
+// Coffee thumbnails as instagram (18)
+for (const thumb of coffeeThumbnails) {
+  baseMedia.push({ thumbnail: thumb, platform: "instagram" });
+}
+// Coffee thumbnails as tiktok (18)
+for (const thumb of coffeeThumbnails) {
+  baseMedia.push({ thumbnail: thumb, platform: "tiktok" });
+}
+// Nike images as snap (4)
+for (const img of nikeImages) {
+  baseMedia.push({ thumbnail: img, platform: "snap" });
+}
+// Coffee videos as tiktok (8)
+for (const cv of coffeeVideos) {
+  baseMedia.push({ thumbnail: cv.thumbnail, video: cv.video, platform: "tiktok" });
+}
+// TikTok videos as youtube (7)
+for (const tv of tiktokVideos) {
+  baseMedia.push({ thumbnail: tv.thumbnail, video: tv.video, platform: "youtube" });
+}
+
+// Repeat base media enough times to ensure every talent gets at least 10 posts
+const allMedia: typeof baseMedia = [];
+while (allMedia.length < 500) {
+  for (const m of baseMedia) {
+    allMedia.push(m);
+    if (allMedia.length >= 500) break;
+  }
 }
 
 const brands = ["Nike", "Adidas", "Puma", "Lululemon", "Under Armour", "New Balance"];
