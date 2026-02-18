@@ -11,6 +11,7 @@ import {
   ContentUser,
   ClipboardList,
   Bookmark,
+  ChartArea,
   Bell,
   Cog,
   Plus,
@@ -74,6 +75,7 @@ const iconMap = {
   ContentUser,
   ClipboardList,
   Bookmark,
+  ChartArea,
   Bell,
   Cog,
 } as const;

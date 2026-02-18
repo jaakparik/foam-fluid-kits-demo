@@ -55,10 +55,15 @@ export const sidebarNav = {
       ],
     },
     {
-      label: "Save for later",
+      label: "Stash",
       icon: "Bookmark" as const,
-      href: "/saved",
-      badge: "23",
+      href: "/stash",
+      badge: "12",
+    },
+    {
+      label: "Data insights",
+      icon: "ChartArea" as const,
+      href: "/data-insights",
     },
   ],
   saved: [

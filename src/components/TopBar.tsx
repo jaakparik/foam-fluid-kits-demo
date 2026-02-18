@@ -1,4 +1,4 @@
-import { Search } from "foamicons";
+import { Search, Bookmark } from "foamicons";
 
 export function TopBar() {
   return (
@@ -14,6 +14,13 @@ export function TopBar() {
           </kbd>
         </div>
       </div>
+      <button className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
+        <Bookmark className="size-4" />
+        <span>Save for later</span>
+        <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-muted px-1.5 text-xs font-medium">
+          23
+        </span>
+      </button>
     </div>
   );
 }

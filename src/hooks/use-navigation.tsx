@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useState } from "react";
 
-type Page = "home" | "media-kits" | "pitch-kits" | "lists" | "list-detail" | "empty-list" | "campaign-reports" | "talent-directory";
+type Page = "home" | "media-kits" | "pitch-kits" | "lists" | "list-detail" | "empty-list" | "campaign-reports" | "talent-directory" | "page-template" | "content-feed";
 
 interface NavigationContextValue {
   page: Page;
@@ -19,6 +19,7 @@ const hrefToPage: Record<string, Page> = {
   "/shared/pitch-kits": "pitch-kits",
   "/shared/lists": "lists",
   "/shared/campaigns": "campaign-reports",
+  "/content": "content-feed",
 };
 
 export function NavigationProvider({
