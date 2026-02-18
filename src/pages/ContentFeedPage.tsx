@@ -33,6 +33,7 @@ export function ContentFeedPage() {
           onViewChange={setView}
           search={search}
           onSearchChange={setSearch}
+          searchPlaceholder="Search content"
           creators={talentNames}
           selectedCreators={selectedCreators}
           onSelectedCreatorsChange={setSelectedCreators}

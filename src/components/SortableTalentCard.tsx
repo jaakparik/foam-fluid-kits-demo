@@ -1,12 +1,12 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { TalentCard } from "@/components/TalentCard";
+import { TalentCard, type PostMedia } from "@/components/TalentCard";
 import type { VisibilityState } from "@tanstack/react-table";
 import type { Talent } from "@/data/talents";
 
 interface SortableTalentCardProps {
   talent: Talent;
-  thumbnails: string[];
+  postMedia: PostMedia[];
   isSelected: boolean;
   onSelectChange: (selected: boolean) => void;
   columnVisibility: VisibilityState;
@@ -14,7 +14,7 @@ interface SortableTalentCardProps {
 
 export function SortableTalentCard({
   talent,
-  thumbnails,
+  postMedia,
   isSelected,
   onSelectChange,
   columnVisibility,
@@ -37,7 +37,7 @@ export function SortableTalentCard({
     <div ref={setNodeRef} style={style}>
       <TalentCard
         talent={talent}
-        thumbnails={thumbnails}
+        postMedia={postMedia}
         isSelected={isSelected}
         onSelectChange={onSelectChange}
         columnVisibility={columnVisibility}

@@ -25,12 +25,12 @@ export function TalentDirectoryPage() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
 
-  // Build thumbnail map: talent name → up to 10 post thumbnails
-  const thumbnailsByTalent = new Map<string, string[]>();
+  // Build media map: talent name → up to 10 post media (thumbnail + optional video)
+  const mediaByTalent = new Map<string, { thumbnail: string; video?: string }[]>();
   for (const post of posts) {
-    const list = thumbnailsByTalent.get(post.talentName) ?? [];
-    if (list.length < 10) list.push(post.thumbnail);
-    thumbnailsByTalent.set(post.talentName, list);
+    const list = mediaByTalent.get(post.talentName) ?? [];
+    if (list.length < 10) list.push({ thumbnail: post.thumbnail, video: post.video });
+    mediaByTalent.set(post.talentName, list);
   }
 
   const isAgency = category === "Agency Talent";
@@ -107,7 +107,7 @@ export function TalentDirectoryPage() {
               <TalentCard
                 key={talent.id}
                 talent={talent}
-                thumbnails={thumbnailsByTalent.get(talent.name) ?? []}
+                postMedia={mediaByTalent.get(talent.name) ?? []}
                 isSelected={!!rowSelection[talent.id]}
                 onSelectChange={(selected) =>
                   setRowSelection((prev) => ({ ...prev, [talent.id]: selected }))

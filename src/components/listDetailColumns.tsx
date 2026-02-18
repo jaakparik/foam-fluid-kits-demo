@@ -15,6 +15,15 @@ import { Button } from "@/components/ui/button";
 import { RowMoreMenu } from "@/components/RowMoreMenu";
 import { ConnectionStatusBadge } from "@/components/ConnectionStatusBadge";
 import type { Talent } from "@/data/talents";
+import { posts } from "@/data/posts";
+
+// Pre-compute thumbnail map: talent name → first 5 thumbnails
+const thumbnailsByTalent = new Map<string, string[]>();
+for (const post of posts) {
+  const list = thumbnailsByTalent.get(post.talentName) ?? [];
+  if (list.length < 5) list.push(post.thumbnail);
+  thumbnailsByTalent.set(post.talentName, list);
+}
 
 export const detailColumnOptions = [
   { id: "bio", label: "Biography" },
@@ -34,6 +43,7 @@ export const detailColumnOptions = [
 
 export const defaultColumnVisibility: VisibilityState = {
   bio: false,
+  posts: false,
 };
 
 export interface SortOption {
@@ -129,7 +139,7 @@ export const columns: ColumnDef<Talent>[] = [
     accessorKey: "name",
     header: "Talent name",
     cell: ({ row }) => (
-      <span className="font-medium text-foreground whitespace-nowrap">{row.original.name}</span>
+      <span className="font-medium text-foreground whitespace-nowrap cursor-pointer hover:underline">{row.original.name}</span>
     ),
   },
   {
@@ -325,6 +335,33 @@ export const columns: ColumnDef<Talent>[] = [
         )}
       </div>
     ),
+    enableSorting: false,
+  },
+  {
+    id: "posts",
+    header: "Posts",
+    cell: ({ row }) => {
+      const thumbs = thumbnailsByTalent.get(row.original.name) ?? [];
+      if (thumbs.length === 0) {
+        return <span className="text-muted-foreground">-</span>;
+      }
+      return (
+        <div className="w-[186px] overflow-hidden">
+          <div className="flex items-center gap-1">
+            {thumbs.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt=""
+                className="h-[60px] shrink-0 rounded object-cover"
+              />
+            ))}
+          </div>
+        </div>
+      );
+    },
+    size: 186,
+    minSize: 186,
     enableSorting: false,
   },
   {

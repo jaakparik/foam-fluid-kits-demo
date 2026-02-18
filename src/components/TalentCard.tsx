@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   LogoInstagram,
   LogoInstagramDark,
@@ -23,15 +24,54 @@ import type { Talent } from "@/data/talents";
 import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
 import type { DraggableAttributes } from "@dnd-kit/core";
 
+export interface PostMedia {
+  thumbnail: string;
+  video?: string;
+}
+
 interface TalentCardProps {
   talent: Talent;
-  thumbnails: string[];
+  postMedia: PostMedia[];
   isSelected: boolean;
   onSelectChange: (selected: boolean) => void;
   columnVisibility: VisibilityState;
   isDragging?: boolean;
   dragHandleListeners?: SyntheticListenerMap;
   dragHandleAttributes?: DraggableAttributes;
+}
+
+function PostThumbnail({ thumbnail, video }: PostMedia) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  if (!video) {
+    return (
+      <img src={thumbnail} alt="" className="w-[76px] h-32 shrink-0 rounded object-cover" />
+    );
+  }
+
+  return (
+    <div
+      className="relative w-[76px] h-32 shrink-0 rounded overflow-hidden group/post"
+      onMouseEnter={() => videoRef.current?.play()}
+      onMouseLeave={() => {
+        if (videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+      }}
+    >
+      <img src={thumbnail} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <video
+        ref={videoRef}
+        src={video}
+        muted
+        loop
+        playsInline
+        preload="none"
+        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover/post:opacity-100 transition-opacity"
+      />
+    </div>
+  );
 }
 
 const platformRows: {
@@ -50,7 +90,7 @@ const platformRows: {
 
 export function TalentCard({
   talent,
-  thumbnails,
+  postMedia,
   isSelected,
   onSelectChange,
   columnVisibility,
@@ -90,7 +130,7 @@ export function TalentCard({
     >
       {/* Top row: name + actions */}
       <div className="flex items-center justify-between">
-        <span className="text-lg font-medium text-foreground truncate">
+        <span className="text-lg font-medium text-foreground truncate cursor-pointer hover:underline">
           {talent.name}
         </span>
         <div className="flex items-center gap-4 shrink-0 ml-3">
@@ -201,16 +241,11 @@ export function TalentCard({
                   </p>
                 </div>
               )}
-              {showPosts && thumbnails.length > 0 && (
+              {showPosts && postMedia.length > 0 && (
                 <div className="flex-1 min-w-0 overflow-hidden -mr-4">
                   <div className="flex gap-2">
-                    {thumbnails.slice(0, 10).map((src, i) => (
-                      <img
-                        key={i}
-                        src={src}
-                        alt=""
-                        className="w-[76px] h-32 shrink-0 rounded object-cover"
-                      />
+                    {postMedia.slice(0, 10).map((media, i) => (
+                      <PostThumbnail key={i} thumbnail={media.thumbnail} video={media.video} />
                     ))}
                   </div>
                 </div>
@@ -229,16 +264,11 @@ export function TalentCard({
                 </p>
               </div>
             )}
-            {showPosts && thumbnails.length > 0 && (
+            {showPosts && postMedia.length > 0 && (
               <div className="flex-1 min-w-0 overflow-hidden -mr-4">
                 <div className="flex gap-2">
-                  {thumbnails.slice(0, 10).map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt=""
-                      className="w-[76px] h-32 shrink-0 rounded object-cover"
-                    />
+                  {postMedia.slice(0, 10).map((media, i) => (
+                    <PostThumbnail key={i} thumbnail={media.thumbnail} video={media.video} />
                   ))}
                 </div>
               </div>

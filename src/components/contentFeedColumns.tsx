@@ -6,6 +6,7 @@ import {
 } from "foamicons";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 import { PlatformLogo } from "@/components/PlatformLogo";
 import type { Post } from "@/data/posts";
 
@@ -60,15 +61,45 @@ export const contentFeedColumns: ColumnDef<Post>[] = [
   {
     id: "thumbnail",
     header: () => null,
-    cell: ({ row }) => (
-      <div className="size-10 shrink-0 overflow-hidden rounded">
-        <img
-          src={row.original.thumbnail}
-          alt=""
-          className="size-full object-cover"
-        />
-      </div>
-    ),
+    cell: ({ row }) => {
+      const { thumbnail, video } = row.original;
+      return (
+        <HoverCard openDelay={200} closeDelay={0}>
+          <HoverCardTrigger asChild>
+            <div className="size-10 shrink-0 overflow-hidden rounded cursor-pointer">
+              <img
+                src={thumbnail}
+                alt=""
+                className="size-full object-cover"
+              />
+            </div>
+          </HoverCardTrigger>
+          <HoverCardContent
+            side="right"
+            align="start"
+            sideOffset={8}
+            className="w-auto p-0 overflow-hidden rounded-lg"
+          >
+            {video ? (
+              <video
+                src={video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-64 aspect-[9/16] object-cover"
+              />
+            ) : (
+              <img
+                src={thumbnail}
+                alt=""
+                className="w-64 aspect-[9/16] object-cover"
+              />
+            )}
+          </HoverCardContent>
+        </HoverCard>
+      );
+    },
     size: 56,
     minSize: 56,
     enableSorting: false,

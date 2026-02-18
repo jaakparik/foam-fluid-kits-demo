@@ -34,12 +34,12 @@ const allLists = [...listsData, ...myListsData];
 const listTalents = talents.slice(0, 45);
 const talentNames = listTalents.map((t) => t.name);
 
-// Build thumbnail map: talent name → up to 10 post thumbnails
-const thumbnailsByTalent = new Map<string, string[]>();
+// Build media map: talent name → up to 10 post media (thumbnail + optional video)
+const mediaByTalent = new Map<string, { thumbnail: string; video?: string }[]>();
 for (const post of posts) {
-  const list = thumbnailsByTalent.get(post.talentName) ?? [];
-  if (list.length < 10) list.push(post.thumbnail);
-  thumbnailsByTalent.set(post.talentName, list);
+  const list = mediaByTalent.get(post.talentName) ?? [];
+  if (list.length < 10) list.push({ thumbnail: post.thumbnail, video: post.video });
+  mediaByTalent.set(post.talentName, list);
 }
 
 export function ListDetailPage() {
@@ -151,7 +151,7 @@ export function ListDetailPage() {
                   <SortableTalentCard
                     key={talent.id}
                     talent={talent}
-                    thumbnails={thumbnailsByTalent.get(talent.name) ?? []}
+                    postMedia={mediaByTalent.get(talent.name) ?? []}
                     isSelected={!!rowSelection[talent.id]}
                     onSelectChange={(selected: boolean) =>
                       setRowSelection((prev) => ({ ...prev, [talent.id]: selected }))
