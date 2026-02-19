@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { MediaCheckbox } from "@/components/MediaCheckbox";
 import { MediaSave } from "@/components/MediaSave";
+import { PostThumbnail } from "@/components/PostThumbnail";
 import { PlatformLogo } from "@/components/PlatformLogo";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/data/posts";
@@ -61,9 +62,8 @@ export function PostsCard({ post, isSelected, onSelectChange, onCardClick }: Pos
         >
           {post.video ? (
             <>
-              <img
+              <PostThumbnail
                 src={post.thumbnail}
-                alt=""
                 className={cn(
                   "size-full object-cover group-hover:opacity-0 transition-opacity",
                   isSelected ? "rounded" : "",
@@ -82,9 +82,8 @@ export function PostsCard({ post, isSelected, onSelectChange, onCardClick }: Pos
               />
             </>
           ) : (
-            <img
+            <PostThumbnail
               src={post.thumbnail}
-              alt=""
               className={cn(
                 "size-full object-cover",
                 isSelected ? "rounded" : "",

@@ -14,6 +14,7 @@ import { CampaignReportsPage } from "@/pages/CampaignReportsPage";
 import { TalentDirectoryPage } from "@/pages/TalentDirectoryPage";
 import { PageTemplatePage } from "@/pages/PageTemplatePage";
 import { ContentFeedPage } from "@/pages/ContentFeedPage";
+import { PostSearchResultsPage } from "@/pages/PostSearchResultsPage";
 import { Toaster } from "@/components/ui/sonner";
 
 function PageRouter() {
@@ -40,7 +41,7 @@ function PageRouter() {
       return <ContentFeedPage />;
     case "home":
     default:
-      return <HomePage />;
+      return <PostSearchResultsPage />;
   }
 }
 

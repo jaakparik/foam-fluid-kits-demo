@@ -7,6 +7,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
+import { PostThumbnail } from "@/components/PostThumbnail";
 import { PlatformLogo } from "@/components/PlatformLogo";
 import type { Post } from "@/data/posts";
 
@@ -67,9 +68,8 @@ export const contentFeedColumns: ColumnDef<Post>[] = [
         <HoverCard openDelay={200} closeDelay={0}>
           <HoverCardTrigger asChild>
             <div className="size-10 shrink-0 overflow-hidden rounded cursor-pointer">
-              <img
+              <PostThumbnail
                 src={thumbnail}
-                alt=""
                 className="size-full object-cover"
               />
             </div>

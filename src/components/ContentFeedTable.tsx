@@ -12,11 +12,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { posts } from "@/data/posts";
+import { posts, type Post } from "@/data/posts";
 import { contentFeedColumns } from "@/components/contentFeedColumns";
 import { ContentFeedRow } from "@/components/ContentFeedRow";
 
 interface ContentFeedTableProps {
+  data?: Post[];
   sorting: SortingState;
   onSortingChange: (updater: SortingState | ((prev: SortingState) => SortingState)) => void;
   rowSelection: RowSelectionState;
@@ -24,13 +25,14 @@ interface ContentFeedTableProps {
 }
 
 export function ContentFeedTable({
+  data,
   sorting,
   onSortingChange,
   rowSelection,
   onRowSelectionChange,
 }: ContentFeedTableProps) {
   const table = useReactTable({
-    data: posts,
+    data: data ?? posts,
     columns: contentFeedColumns,
     state: { rowSelection, sorting },
     onRowSelectionChange,

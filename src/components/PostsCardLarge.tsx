@@ -10,9 +10,16 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MediaCheckbox } from "@/components/MediaCheckbox";
 import { MediaSave } from "@/components/MediaSave";
+import { ContentReasonBadge } from "@/components/ContentReasonBadge";
+import { PostThumbnail } from "@/components/PostThumbnail";
 import { PlatformLogo } from "@/components/PlatformLogo";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/data/posts";
+
+interface ReasonBadge {
+  type: "visual" | "audio";
+  count: number;
+}
 
 interface PostsCardLargeProps {
   post: Post;
@@ -21,6 +28,7 @@ interface PostsCardLargeProps {
   onCardClick: () => void;
   infoExpanded: boolean;
   onInfoToggle: () => void;
+  reasonBadges?: ReasonBadge[];
 }
 
 export function PostsCardLarge({
@@ -30,6 +38,7 @@ export function PostsCardLarge({
   onCardClick,
   infoExpanded,
   onInfoToggle,
+  reasonBadges,
 }: PostsCardLargeProps) {
   const [saved, setSaved] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -67,9 +76,8 @@ export function PostsCardLarge({
         >
           {post.video ? (
             <>
-              <img
+              <PostThumbnail
                 src={post.thumbnail}
-                alt=""
                 className="size-full object-cover group-hover:opacity-0 transition-opacity"
               />
               <video
@@ -82,9 +90,8 @@ export function PostsCardLarge({
               />
             </>
           ) : (
-            <img
+            <PostThumbnail
               src={post.thumbnail}
-              alt=""
               className="size-full object-cover"
             />
           )}
@@ -147,7 +154,12 @@ export function PostsCardLarge({
                       ))}
                     </div>
                   </div>
-                  <Badge>{post.score}</Badge>
+                  <div className="flex flex-col items-end gap-1">
+                    <Badge>{post.score}</Badge>
+                    {reasonBadges?.map((badge, i) => (
+                      <ContentReasonBadge key={i} type={badge.type} count={badge.count} />
+                    ))}
+                  </div>
                 </div>
 
                 {/* Metrics row */}
