@@ -20,7 +20,7 @@ interface CollectionsSectionProps {
 }
 
 export function CollectionsSection({ view, category }: CollectionsSectionProps) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [pinnedIds, setPinnedIds] = useState<Set<string>>(new Set());
 
   const activeData = dataByCategory[category] ?? collectionsData;
