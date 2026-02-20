@@ -14,6 +14,7 @@ import {
   PlayFill,
   LayoutRowsFill,
 } from "foamicons";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { MediaCheckbox } from "@/components/MediaCheckbox";
 import { PlatformLogo } from "@/components/PlatformLogo";
@@ -150,15 +151,19 @@ export function PostSearchDetailModal({
 
         {/* Left: Media panel */}
         <div
-          className={
-            isLandscape && !post.video
-              ? "relative flex-1 min-w-0 flex items-center justify-end bg-background"
-              : "relative w-1/2 flex items-center justify-center bg-background"
-          }
+          className={cn(
+            "relative min-w-0 flex items-center justify-center bg-background",
+            isLandscape ? "flex-1" : "w-1/2",
+          )}
         >
           {post.video ? (
             <div
-              className="group/video relative h-full aspect-[11/16] cursor-pointer"
+              className={cn(
+                "group/video relative cursor-pointer",
+                isLandscape
+                  ? "w-full h-auto max-h-full aspect-video"
+                  : "h-full max-w-full aspect-[11/16]",
+              )}
               onClick={() => {
                 if (videoRef.current) {
                   if (isPlaying) {
@@ -233,11 +238,12 @@ export function PostSearchDetailModal({
 
         {/* Right: Detail panel */}
         <div
-          className={
-            isLandscape && !post.video
-              ? "flex flex-col w-[440px] min-w-[440px] shrink-0 border-l border-border"
-              : "flex flex-col w-1/2 border-l border-border"
-          }
+          className={cn(
+            "flex flex-col border-l border-border",
+            isLandscape
+              ? "w-[440px] min-w-[440px] shrink-0"
+              : "w-1/2",
+          )}
         >
           <div className="flex-1 overflow-auto p-6 max-w-[700px]">
             {/* Header */}
