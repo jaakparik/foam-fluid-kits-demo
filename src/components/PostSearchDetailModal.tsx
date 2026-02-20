@@ -16,7 +16,6 @@ import {
 } from "foamicons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { MediaCheckbox } from "@/components/MediaCheckbox";
 import { PlatformLogo } from "@/components/PlatformLogo";
 import {
   platformMetricsConfig,
@@ -90,8 +89,8 @@ function MetricSectionRow({ section, post }: { section: MetricSection; post: Pos
 
 export function PostSearchDetailModal({
   post,
-  isSelected,
-  onSelectChange,
+  isSelected: _isSelected,
+  onSelectChange: _onSelectChange,
   onClose,
   onPrev,
   onNext,

@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/hooks/use-theme";
 import { NavigationProvider, useNavigation } from "@/hooks/use-navigation";
 import { AppSidebar } from "@/components/AppSidebar";
 import { TopBar } from "@/components/TopBar";
-import { HomePage } from "@/pages/HomePage";
 import { MediaKitsPage } from "@/pages/MediaKitsPage";
 import { PitchKitsPage } from "@/pages/PitchKitsPage";
 import { ListsPage } from "@/pages/ListsPage";

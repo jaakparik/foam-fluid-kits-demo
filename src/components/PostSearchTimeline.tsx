@@ -39,7 +39,6 @@ function buildWaveformPath(width: number, height: number, bars: number): string 
 }
 
 const WAVEFORM_PATH_FULL = buildWaveformPath(600, 48, 120);
-const WAVEFORM_PATH_SLIM = buildWaveformPath(600, 24, 120);
 
 const markerColors: Record<"visual" | "audio", { bg: string; border: string; ring: string }> = {
   visual: {
